@@ -2,6 +2,7 @@ version: '26.0'
 
 services:
   web:
+    image: your-django-image
     build: .
     command: python /code/manage.py runserver 0.0.0.0:8000
     volumes:
@@ -11,6 +12,8 @@ services:
     depends_on:
       - db
     environment:
+      - PROTOCOL=http
+      - DOMAIN=localhost:8000
       - "DJANGO_SECRET_KEY=${DOCKER_COMPOSE_DJANGO_SECRET_KEY}"
       - "DJANGO_DEBUG=True"
 

@@ -28,8 +28,17 @@
                     <a class="nav-link" href="#">Blog</a>
                 </div>
             </div>
-            <div class="mx-2 text-white">Welcome</div>
+            {% if user.is_authenticated %}
+            <div class="mx-2 text-white">Welcome {{user.username}}</div>
+            <form method="post" action="{%url 'logout'%}">
+                {% csrf_token %}
+                <input class="btn btn-danger" value="Logout" type="submit">
+            </form>
         </div>
+            {% else %}
+                <a class="btn btn-success" href={% url "accounts:signup" %}>SignUp</a>
+                <a class="btn btn-light" href={% url "login" %}>Login</a> 
+            {% endif %}
     </nav>
     
     <div class="container-fluid bg-info">
