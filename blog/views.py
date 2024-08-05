@@ -34,6 +34,5 @@ class PostDeleteView(LoginRequiredMixin, generic.DeleteView):
 
 class PostCreateView(LoginRequiredMixin, generic.CreateView):
     model= Post
-    template_name= 'blog/post_update.html'
+    template_name= 'blog/post_create.html'
     fields = ('title', 'text', 'status', 'author',)
-    
