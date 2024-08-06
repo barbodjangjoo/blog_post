@@ -23,6 +23,9 @@ class CommentPost(models.Model):
     post = models.ForeignKey(Post, on_delete=models.CASCADE)
     text = models.TextField()
 
+    datetime_created = models.DateTimeField(auto_now_add=True)
+    datetime_modified = models.DateTimeField(auto_now=False)
+
     def __str__(self):
         return self.text
     
